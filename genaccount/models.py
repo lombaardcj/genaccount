@@ -31,33 +31,36 @@ class Account(models.Model):
     name = models.CharField(max_length=50, unique=True, db_index=True)
     type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES, blank=True)    
 
-    comment = models.harField(max_length=50)
+    comment = models.CharField(max_length=50,blank=True, null=True)
     
     balance = models.DecimalField(max_digits=10,decimal_places=2,default='0.00')
 
-    created_on = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated_on = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now)
+    updated_on = models.DateTimeField(default=timezone.now)
     
     
     def __str__(self):
-        return self.name+' ('+str(self.id)+')'
-    
+        return self.name + ' (' + str(self.id) + ')'
+
 
 class BasicJournal(models.Model):
     author = models.ForeignKey('auth.User')
-    postdate = models.DateTimeField(auto_now_add=True, default=timezone.now, help_text="When Journal was posted")
+    postdate = models.DateTimeField(default=timezone.now, help_text="When Journal was posted")
 
     comment = models.CharField(max_length=50,help_text="Short comment on journal action", db_index=True)
     
-    created_on = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated_on = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now)
+    updated_on = models.DateTimeField(default=timezone.now)
+    
+    
     def __str__(self):
-        return self.comment+' ('+str(self.id)+')'
-        
+        return self.comment + ' (' + str(self.id) + ')'
+
+
 class JournalEntry(models.Model):
     author = models.ForeignKey('auth.User')
 
-    basic_journal = models.ForeignKey(BasicJournal, blank=True, null=True))
+    basic_journal = models.ForeignKey(BasicJournal, blank=True, null=True)
     
     account = models.ForeignKey('genaccount.Account', on_delete=models.PROTECT)
     
@@ -65,9 +68,9 @@ class JournalEntry(models.Model):
 
     balance = models.DecimalField(max_digits=10,decimal_places=2,default='0.00', help_text="Postive balance always debit, negative balance always credit")
     
-    created_on = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated_on = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now)
+    updated_on = models.DateTimeField(default=timezone.now)
     
     
     def __str__(self):
-        return self.+' ('+str(self.id)+')'
+        return self + ' (' + str(self.id) + ')'
