@@ -49,7 +49,7 @@ class BasicJournal(models.Model):
 
     comment = models.CharField(max_length=50,help_text="Short comment on journal action", db_index=True)
     
-    created_on = models.DateTimeField(default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now,editable=False)
     updated_on = models.DateTimeField(default=timezone.now)
     
     
@@ -60,7 +60,7 @@ class BasicJournal(models.Model):
 class JournalEntry(models.Model):
     author = models.ForeignKey('auth.User')
 
-    basic_journal = models.ForeignKey(BasicJournal, blank=True, null=True)
+    basic_journal = models.ForeignKey(BasicJournal)
     
     account = models.ForeignKey('genaccount.Account', on_delete=models.PROTECT)
     
@@ -68,7 +68,7 @@ class JournalEntry(models.Model):
 
     balance = models.DecimalField(max_digits=10,decimal_places=2,default='0.00', help_text="Postive balance always debit, negative balance always credit")
     
-    created_on = models.DateTimeField(default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now,editable=False)
     updated_on = models.DateTimeField(default=timezone.now)
     
     
