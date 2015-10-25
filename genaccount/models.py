@@ -2,6 +2,8 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.core.urlresolvers import reverse
+
 
 # Create your models here.
 
@@ -35,7 +37,7 @@ class Account(models.Model):
     
     balance = models.DecimalField(max_digits=10,decimal_places=2,default='0.00')
 
-    created_on = models.DateTimeField(default=timezone.now)
+    created_on = models.DateTimeField(default=timezone.now,editable=False)
     updated_on = models.DateTimeField(default=timezone.now)
     
     
@@ -59,7 +61,10 @@ class Account(models.Model):
             (OTHER_INCOME, 'Other Income'),
             (OTHER_EXPENSE, 'Other Expense')
         )
-        return '[' + str(self.type) + '](' + str(self.id) + ') ' + self.name + ' ' + TYPE_CHOICES[self.type][1]
+        return str(self.type) + '-' + str(self.id) + ' ' + self.name + ' - (' + TYPE_CHOICES[self.type][1]+')'
+
+    def get_absolute_url(self):
+        return reverse('genaccount:account_detail', args=[str(self.id)])
 
 
 class BasicJournal(models.Model):

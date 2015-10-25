@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Constants for App Genaccounts
+GENACCOUNTHEADING = 'Gen Accounting v0.1'
 
 # Application definition
 
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'swiftses.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,7 +90,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#Define timezone 
+TIME_ZONE = 'Africa/Johannesburg'
 
 USE_I18N = True
 
@@ -99,5 +102,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+#Have to define STATIC_ROOT to use collectstatic package
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'

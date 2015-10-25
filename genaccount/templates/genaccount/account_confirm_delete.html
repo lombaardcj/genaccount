@@ -1,0 +1,15 @@
+{% extends "genaccount/base.html" %}
+
+{% block content %}
+        <div class="entry">
+            <h1>Back to <a href="{% url 'genaccount:account_list' %}">Account List</a></h1>
+        </div>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete Account <strong>{{ object.name }}</strong>?</p>
+    <input type="submit" value="yes" />
+    <a href="{% url 'genaccount:account_list' %}">no</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "genaccount/base.html" %}
+
+{% block content %}
+        <div class="entry">
+            <h1>Back to <a href="{% url 'genaccount:account_list' %}">Account List</a></h1>
+        </div>
+{% if object_list %}
+    {% for account in object_list %}
+        <p> 
+            {{ account.name }} 
+            <a href="{% url 'genaccount:account_detail' account.pk %}">detail...</a>
+        </p>
+    {% endfor %}
+{% else %}
+        <p> No account to display </p>
+{% endif %}
+    <a href="{% url 'genaccount:account_create' %}">Add...</a>
+{% endblock %}

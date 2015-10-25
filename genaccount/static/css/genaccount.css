@@ -1,0 +1,72 @@
+.page-header {
+    background-color: #007094;
+    margin-top: 0;
+    padding: 10px 10px 10px 20px;
+    width: 100%;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 25pt;
+    text-decoration: none;
+}
+
+.page-footer, .page-footer p{
+    background-color: #006084;
+    margin: 0;
+    padding: 5px 5px 5px 5px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 8pt;
+    text-decoration: none;
+}
+
+.content-container {
+    margin-left: 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #828282;
+}
+
+.type {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.entry-form textarea, .entry-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.entry {
+    padding:5px;
+    background-color: #bbbbbb;
+    margin-bottom: 10px;
+    font-size: 10pt;
+}
+
+.entry h1 a, .entry h1 a:visited, .entry h1 {
+    line-height:1.5;
+    background-color: #dddddd;
+    color: #000000;
+    font-size: 20pt;
+}
+
+.error {
+    color: #ffffff;
+    background-color: #ff0909;
+}
